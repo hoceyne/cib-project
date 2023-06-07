@@ -14,6 +14,9 @@ class Service extends Model
         'medical_staff',
         'paramedical_staff',
         'bed_capacity',
+        'email',
+        'phone_number',
+        'fax',
 
     ];
 

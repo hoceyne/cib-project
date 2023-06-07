@@ -16,6 +16,9 @@ return new class extends Migration
             $table->string('medical_staff');
             $table->string('paramedical_staff');
             $table->string('bed_capacity');
+            $table->string('email');
+            $table->string('phone_number');
+            $table->string('fax');
 
             $table->uuid('departement_id')->nullable();
             $table->foreign('departement_id')->references('id')->on('departements')->onDelete('cascade');

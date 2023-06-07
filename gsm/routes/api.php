@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -18,10 +19,11 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::middleware(['check-api-token'])->group(function () {
-    Route::get('/user', function (Request $request) {
-        $user = $request->attributes->get('auth_user');
-
-        return response()->json($user,200);
-        // Your protected route logic here
+    Route::prefix('discharges')->group(function () {
+        Route::get('/', [AdminController::class, 'index']);
+        Route::post('/', [AdminController::class, 'store']);
+        Route::get('/{id}', [AdminController::class, 'show']);
+        Route::put('/{id}', [AdminController::class, 'update']);
+        Route::delete('/{id}', [AdminController::class, 'destroy']);
     });
 });
